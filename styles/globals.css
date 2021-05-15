@@ -1,33 +1,40 @@
-@import url('https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,700;1,700&family=Hind:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,700;1,700&family=Open+Sans:wght@400;600;700&display=swap');
 
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
-:root{
-  --bg-100: #2B323D;
-  --bg-200: #343C48;
-  --white: #FAFAFA;
-  --primary: #2AEBB1;
-  --secondary: #EB2A92;
+:root {
+	--dark-100: #2b323d;
+	--dark-200: #343c48;
+	--white: #fafafa;
+	--primary: #2aebb1;
+	--primary-light: #79ffd7;
+	--primary-dark: #13aa7d;
+	--secondary: #eb2a92;
+	--secondary-light: #ec5ba9;
+	--secondary-dark: #b81f70;
 }
 
-body{
-  background-color: var(--bg-100);
-  font-family: 'Hind', 'Arial', sans-serif;
-  color: var(--white);
+body {
+	background-color: var(--dark-100);
+	font-family: 'Open Sans', 'Arial', sans-serif;
+	color: var(--white);
 }
 
-h1, h2, h3{
-  font-family: 'Arvo', sans-serif;
+h1,
+h2,
+h3 {
+	font-family: 'Arvo', sans-serif;
 }
 
-p{
-  line-height: 1.5;
+p {
+	line-height: 1.5;
 }
 
-input, button{
-  font-family: inherit;
+input,
+button {
+	font-family: inherit;
 }
