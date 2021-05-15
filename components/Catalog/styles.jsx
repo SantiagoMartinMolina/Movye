@@ -1,9 +1,5 @@
-import styled, { keyframes } from 'styled-components';
-
-const rotate = keyframes`
-	0% { transform: rotateZ(0); }
-	100% { transform: rotateZ(360deg); }
-`;
+import styled from 'styled-components';
+import { rotate } from '../../utils/animations';
 
 export const StyledCatalog = styled.main`
 	padding-bottom: 2em;

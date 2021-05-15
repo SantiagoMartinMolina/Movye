@@ -41,10 +41,12 @@ const Navbar = () => {
 			</ul>
 
 			<div className='credits'>
-				<FaReact />
 				<p>
-					Hecho por <a href='https://www.linkedin.com/in/santiago-molina-dev/'>Santi</a> y{' '}
-					<a href='https://www.linkedin.com/in/emiliano-alfonso/'>Emi</a>
+					<FaReact />
+					<span>
+						Made by <a href='https://www.linkedin.com/in/santiago-molina-dev/'>Santi</a>{' '}
+						& <a href='https://www.linkedin.com/in/emiliano-alfonso/'>Emi</a>
+					</span>
 				</p>
 			</div>
 		</StyledNavbar>

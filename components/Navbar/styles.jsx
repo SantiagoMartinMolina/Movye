@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { show, hide } from '../../utils/animations';
 
 export const StyledNavbar = styled.nav`
 	background-color: var(--dark-200);
@@ -11,16 +12,17 @@ export const StyledNavbar = styled.nav`
 	display: flex;
 	flex-direction: column;
 	width: 4em;
+	transition: width 200ms ease;
 
 	ul {
 		list-style: none;
 
 		a {
-			text-decoration: none;
-			color: inherit;
 			display: flex;
 			align-items: center;
 			padding: 1em 0 1em 1em;
+			text-decoration: none;
+			color: inherit;
 			border-left: 5px solid transparent;
 			border-right: 5px solid transparent;
 			transition: border-left-color 200ms ease, color 200ms ease, background-color 200ms ease;
@@ -34,32 +36,35 @@ export const StyledNavbar = styled.nav`
 
 		svg {
 			font-size: 1.4em;
+			min-width: 1em;
 		}
 
 		span {
-			margin-left: 1em;
+			font-size: 0.9em;
+			margin-left: 1.5em;
 			display: none;
 		}
 	}
 
 	.credits {
-		width: 100%;
-		padding: 0 1em 1em;
-		margin: auto auto 0;
-		text-align: center;
-		display: none;
+		margin-top: auto;
 
 		p {
-			font-size: 0.85em;
-			opacity: 0;
-			width: 0;
-			height: 0;
-			overflow: hidden;
-			transition: opacity 600ms ease;
+			display: flex;
+			align-items: flex-end;
+			padding: 0 1.25em 1em;
+		}
+
+		span {
+			font-size: 0.75em;
+			color: #eee;
+			margin-left: 1.5em;
+			display: none;
 		}
 
 		svg {
-			font-size: 1.3em;
+			font-size: 1.4em;
+			min-width: 1em;
 		}
 
 		a {
@@ -69,6 +74,20 @@ export const StyledNavbar = styled.nav`
 
 		a:hover {
 			color: var(--secondary);
+		}
+	}
+
+	&:hover {
+		width: 15em;
+
+		span {
+			display: inline;
+			animation: ${show} 1s;
+		}
+
+		.credits svg {
+			/* animation: ${hide} 1s;
+			animation-fill-mode: forwards; */
 		}
 	}
 `;
