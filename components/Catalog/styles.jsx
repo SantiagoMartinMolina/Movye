@@ -6,7 +6,8 @@ const rotate = keyframes`
 `;
 
 export const StyledCatalog = styled.main`
-	padding-bottom: 40px;
+	padding-bottom: 2em;
+	margin-left: 4em;
 	.container {
 		display: flex;
 		justify-content: center;

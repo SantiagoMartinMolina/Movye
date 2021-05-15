@@ -19,7 +19,7 @@
 }
 
 body {
-	background-color: var(--dark-100);
+	background-color: var(--dark-200);
 	font-family: 'Open Sans', 'Arial', sans-serif;
 	color: var(--white);
 }
