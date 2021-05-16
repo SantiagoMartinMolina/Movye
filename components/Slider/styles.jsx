@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { show } from '../../utils/animations'
 
 export const StyledSlider = styled.div`
     background-image: url(${props => props.bgImage});
@@ -14,7 +15,7 @@ export const StyledSlider = styled.div`
         display: flex;
         flex-direction: column;
         flex: 1;
-        transform: translateY(5em);
+        transform: translateY(1.5em);
         transition: transform 200ms ease;
         background: linear-gradient(0deg, rgba(0,0,0,0.70) 0%, rgba(0,0,0,0) 100%);
     }
@@ -24,7 +25,8 @@ export const StyledSlider = styled.div`
     }
     .description{
         max-width: 80ch;
-        opacity: 0;
+        /* opacity: 0; */
+        display: none;
         transition: opacity 200ms ease;
     }
     .data{
@@ -48,8 +50,10 @@ export const StyledSlider = styled.div`
 
     &:hover{
         .description{
-            opacity: 1;
-            transition-delay: 200ms;
+            /* opacity: 1; */
+            display: block;
+            animation: ${show} 1000ms; 
+            /* transition-delay: 200ms; */
         }
         .info{
             transform: translateY(0);

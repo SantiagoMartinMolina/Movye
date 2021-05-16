@@ -2,20 +2,22 @@
 import { StyledSlider } from './styles';
 import { BsCalendar } from 'react-icons/bs';
 import { AiFillStar } from 'react-icons/ai';
+import { movies } from '../../utils/movies'
 
 
-const Slider = ({ bgImage }) => {
+const Slider = () => {
+    const idx = Math.round(Math.random() * (movies.length - 1));
+    const movie = movies[idx];
+    const { title, year, description, image, trailer, rating } = movie;
     return (
-        <StyledSlider bgImage={bgImage}>
+        <StyledSlider bgImage={image}>
             <div className='info'>
-                <h1>Titulo de la pelicula Titulo de la pelicula Titulo de la pelicula</h1>
+                <h1>{title}</h1>
                 <div className='data'>
-                    <p><BsCalendar />1966</p>
-                    <p><AiFillStar />7.6</p>
+                    <p><BsCalendar />{year}</p>
+                    <p><AiFillStar />{rating}</p>
                 </div>
-                <p className='description'>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab suscipit velit molestiae dolorum, quibusdam commodi sequi dolor voluptatibus cum beatae repudiandae adipisci repellendus earum, reiciendis laboriosam ea aspernatur odio animi.
-                </p>
+                <p className='description'>{description}</p>
             </div>
         </StyledSlider>
     )

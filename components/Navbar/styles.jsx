@@ -2,10 +2,12 @@ import styled from 'styled-components';
 import { show, hide } from '../../utils/animations';
 
 export const StyledNavbar = styled.nav`
+	--top: ${props => props.top <= 64 ? props.top + 'px' : '64px'};
+
 	background-color: var(--dark-200);
 	padding: 1em 0;
 	position: fixed;
-	top: 4em;
+	top: calc(4em - var(--top));
 	left: 0;
 	bottom: 0;
 	z-index: 1;

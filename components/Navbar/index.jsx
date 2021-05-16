@@ -5,10 +5,22 @@ import { GoSearch } from 'react-icons/go';
 import { HiOutlineHeart } from 'react-icons/hi';
 import { MdLocalMovies } from 'react-icons/md';
 import { FaReact } from 'react-icons/fa';
+import { useEffect, useState } from 'react';
 
 const Navbar = () => {
+
+	const [top, setTop] = useState(0);
+
+	const handleScroll = () => {
+		setTop(window.scrollY);
+	}
+
+	useEffect(() => {
+		window.addEventListener('scroll', handleScroll);
+	}, [])
+
 	return (
-		<StyledNavbar className='scroll'>
+		<StyledNavbar top={top}>
 			<ul>
 				<li>
 					<Link href='/'>
