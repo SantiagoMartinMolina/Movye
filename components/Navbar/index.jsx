@@ -3,9 +3,9 @@ import { StyledNavbar } from './styles';
 import { AiOutlineHome } from 'react-icons/ai';
 import { GoSearch } from 'react-icons/go';
 import { HiOutlineHeart } from 'react-icons/hi';
-import { MdLocalMovies } from 'react-icons/md';
 import { FaReact } from 'react-icons/fa';
 import { useEffect, useState } from 'react';
+import { BiCameraMovie } from 'react-icons/bi';
 
 const Navbar = () => {
 	const [top, setTop] = useState(0);
@@ -29,7 +29,7 @@ const Navbar = () => {
 					</Link>
 				</li>
 				<li>
-					<Link href='/'>
+					<Link href='/search'>
 						<a>
 							<GoSearch /> <span>Search</span>
 						</a>
@@ -45,7 +45,7 @@ const Navbar = () => {
 				<li>
 					<Link href='/'>
 						<a>
-							<MdLocalMovies /> <span>Watchlist</span>
+							<BiCameraMovie /> <span>Watchlist</span>
 						</a>
 					</Link>
 				</li>

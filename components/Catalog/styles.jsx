@@ -3,7 +3,6 @@ import { rotate } from '../../utils/animations';
 
 export const StyledCatalog = styled.main`
 	padding-bottom: 2em;
-	margin-left: 4em;
 	.container {
 		display: flex;
 		justify-content: center;

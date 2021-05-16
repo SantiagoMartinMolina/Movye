@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const StyledMovieCard = styled.div`
 	min-width: 15em;
+	max-width: 30em;
 	height: 20em;
 	flex: 1;
 	/* 
@@ -111,7 +112,7 @@ export const StyledMovieCard = styled.div`
 		.info,
 		h2 {
 			transform: translateY(0);
-			-webkit-line-clamp: none;
+			-webkit-line-clamp: unset;
 		}
 
 		button {

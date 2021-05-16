@@ -1,14 +1,22 @@
 import Navbar from '../Navbar/index';
 import Topbar from '../Topbar/index';
-import { MovieContext } from '../../context';
+import Modal from '../Modal';
+import { Context } from '../../context/index';
+import { useContext } from 'react';
 
 const Layout = ({ children }) => {
+
+	const { showMovie } = useContext(Context);
 	return (
-		<MovieContext>
+		<>
+			{showMovie.show && <Modal />}
 			<Navbar />
 			<Topbar />
-			{children}
-		</MovieContext>
+
+			<div style={{ marginLeft: '4em' }}>
+				{children}
+			</div>
+		</>
 	);
 };
 

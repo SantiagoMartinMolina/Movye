@@ -56,9 +56,21 @@ export const StyledModal = styled.div`
 		padding-bottom: 2em;
 
 		li {
+			display: flex;
+			align-items: center;
 			margin-right: 2em;
 			position: relative;
 			font-size: 0.9em;
+
+			&:last-child{
+				svg{
+					color: gold;
+				}
+			}
+
+			svg{
+				margin-right: 0.5em;
+			}
 
 			a {
 				text-decoration: none;

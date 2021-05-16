@@ -1,16 +1,19 @@
 import { useContext, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { StyledModal } from './styles.jsx';
-
+import { AiFillStar } from 'react-icons/ai';
+import { BsCalendar } from 'react-icons/bs';
 import { HiOutlineHeart } from 'react-icons/hi';
-import { MdLocalMovies } from 'react-icons/md';
+import { BiCameraMovie } from 'react-icons/bi';
 import { Context } from '../../context';
 
 const Modal = () => {
-	const { setShowMovie, showMovie } = useContext(Context);
+	const { setShowMovie, showMovie, genres } = useContext(Context);
 	const overlay = useRef(null);
 	const { movie } = showMovie;
-	const { medium_cover_image, rating, title, summary, year, runtime, director, genres } = movie;
+	const { poster_path, release_date, title, vote_average, genre_ids, overview } = movie;
+	const genresNames = genres.filter((g) => genre_ids.includes(g.id));
+	const url = poster_path ? `https://image.tmdb.org/t/p/w500/${poster_path}` : 'https://images.unsplash.com/photo-1542204637-e67bc7d41e48?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80'
 
 	const closeClick = (ev) => {
 		if (ev.target === overlay.current) {
@@ -34,39 +37,28 @@ const Modal = () => {
 		};
 	}, []);
 
-	return showMovie.show ? (
+	return (
 		<StyledModal ref={overlay}>
 			<div className='modal'>
 				<div className='modal__img'>
-					<img src={medium_cover_image} alt={`Poster of ${title}`} />
+					<img src={url} alt={`Poster of ${title}`} />
 				</div>
 				<div className='modal__info'>
 					<h1 className='movie__title'>{title}</h1>
 					<ul className='movie__data'>
-						<li>{year}</li>
-						<li>{runtime} min.</li>
-						{director ? (
-							<li>
-								Directed by{' '}
-								<Link href='/'>
-									<a>Pepe</a>
-								</Link>
-							</li>
-						) : (
-							<li>No director availabe</li>
-						)}
+						{release_date && <li><BsCalendar />{release_date.slice(0, 4)}</li>}
+						<li><AiFillStar />{vote_average} / 10</li>
 					</ul>
 
 					<div className='modal__scroll'>
-						<p className='movie__desc'>{summary}</p>
-						<p>Rating: {rating} / 10</p>
+						<p className='movie__desc'>{overview}</p>
 						<p>
 							Genres:
-							{genres.map((g) => (
-								<Link href='/' key={g}>
-									<a>{g}</a>
-								</Link>
-							))}
+							{genresNames.map((g) => (
+							<Link href='/' key={g.id}>
+								<a>{g.name}</a>
+							</Link>
+						))}
 						</p>
 					</div>
 
@@ -75,15 +67,13 @@ const Modal = () => {
 							<HiOutlineHeart /> Add to favorites
 						</button>
 						<button className='btn-watch'>
-							<MdLocalMovies /> Add to watchlist
+							<BiCameraMovie /> Add to watchlist
 						</button>
 					</div>
 				</div>
 			</div>
 		</StyledModal>
-	) : (
-		<></>
-	);
+	)
 };
 
 export default Modal;
