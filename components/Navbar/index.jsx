@@ -8,16 +8,15 @@ import { FaReact } from 'react-icons/fa';
 import { useEffect, useState } from 'react';
 
 const Navbar = () => {
-
 	const [top, setTop] = useState(0);
 
 	const handleScroll = () => {
 		setTop(window.scrollY);
-	}
+	};
 
 	useEffect(() => {
 		window.addEventListener('scroll', handleScroll);
-	}, [])
+	}, []);
 
 	return (
 		<StyledNavbar top={top}>

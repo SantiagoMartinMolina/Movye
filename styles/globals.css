@@ -18,6 +18,16 @@
 	--secondary-dark: #b81f70;
 }
 
+::-webkit-scrollbar {
+	background-color: var(--dark-200);
+	width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: var(--primary);
+	border-radius: 99em;
+}
+
 body {
 	background-color: var(--dark-200);
 	font-family: 'Open Sans', 'Arial', sans-serif;

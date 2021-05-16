@@ -1,8 +1,11 @@
+import { useContext } from 'react';
 import { AiFillStar } from 'react-icons/ai';
 import { BsCalendar } from 'react-icons/bs';
+import { Context } from '../../context';
 import { StyledMovieCard } from './styles';
 
 const MovieCard = ({ movie }) => {
+	const { setShowMovie } = useContext(Context);
 	const { medium_cover_image, title, rating, year } = movie;
 	return (
 		<StyledMovieCard>
@@ -21,7 +24,9 @@ const MovieCard = ({ movie }) => {
 						{rating}
 					</p>
 				</div>
-				<button className='btn'>Read more...</button>
+				<button className='btn' onClick={() => setShowMovie({ movie, show: true })}>
+					Read more...
+				</button>
 			</div>
 		</StyledMovieCard>
 	);

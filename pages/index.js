@@ -1,15 +1,13 @@
-import Layout from '../components/Layout';
-import Catalog from '../components/Catalog/index';
 import { useEffect, useState } from 'react';
 import axios from '../axios';
+import Layout from '../components/Layout';
+import Catalog from '../components/Catalog/index';
+import Modal from '../components/Modal';
 
 export default function Home() {
-	// const [showMovie, setShowMovie] = useState({ show: false, movie: {} });
 	const [movieList, setMovieList] = useState([]);
 	const [pageNumber, setPageNumber] = useState(1);
 	const [isLoading, setIsLoading] = useState(false);
-
-	console.log(movieList);
 
 	useEffect(() => {
 		setIsLoading(true);
@@ -27,7 +25,7 @@ export default function Home() {
 
 	return (
 		<Layout>
-			{/* <Modal peli={ } /> */}
+			<Modal />
 			<Catalog movieList={movieList} isLoading={isLoading} changePage={setPageNumber} />
 		</Layout>
 	);
