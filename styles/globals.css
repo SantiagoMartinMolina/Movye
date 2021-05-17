@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,700;1,700&family=Open+Sans:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&family=Open+Sans:wght@400;600;700&display=swap');
 
 * {
 	margin: 0;
@@ -9,6 +9,7 @@
 :root {
 	--dark-100: #2b323d;
 	--dark-200: #343c48;
+	--dark-300: #404a58;
 	--white: #fafafa;
 	--primary: #2aebb1;
 	--primary-light: #79ffd7;
@@ -16,6 +17,9 @@
 	--secondary: #eb2a92;
 	--secondary-light: #ec5ba9;
 	--secondary-dark: #b81f70;
+
+	--ff-body: 'Open Sans', 'Arial', sans-serif;
+	--ff-title: 'Arvo', sans-serif;
 }
 
 ::-webkit-scrollbar {
@@ -30,14 +34,14 @@
 
 body {
 	background-color: var(--dark-200);
-	font-family: 'Open Sans', 'Arial', sans-serif;
+	font-family: var(--ff-body);
 	color: var(--white);
 }
 
 h1,
 h2,
 h3 {
-	font-family: 'Arvo', sans-serif;
+	font-family: var(--ff-title);
 }
 
 p {

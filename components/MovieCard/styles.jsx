@@ -5,14 +5,6 @@ export const StyledMovieCard = styled.div`
 	max-width: 30em;
 	height: 20em;
 	flex: 1;
-	/* 
-		flex-grow: cuánto crece el elemento
-		flex-shrink: si se puede achicar
-		flex-basis: el ancho ideal que puede tener el elemento
-
-		flex: 1 1 20em; FLEX-GROW FLEX-SHRINK FLEX-BASIS
-		flex: 1; --> forma abreviada de flex: 1 0 0;
-	*/
 	display: flex;
 	overflow: hidden;
 	position: relative;
