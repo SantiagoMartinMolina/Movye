@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { rotate, showAndMove } from '../../utils/animations';
+import { rotate, showAndMove } from '../utils/animations';
 
 export const StyledSearch = styled.main`
  padding: 2em 0;

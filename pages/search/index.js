@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from '../../axios';
 import Layout from '../../components/Layout';
 import MovieCard from '../../components/MovieCard/index';
-import { StyledSearch } from './styles';
+import { StyledSearch } from '../../styles/styles';
 import { ImSpinner2 } from 'react-icons/im';
 import { GoSearch } from 'react-icons/go';
 import { BsExclamationTriangle } from 'react-icons/bs';
