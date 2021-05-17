@@ -28,7 +28,7 @@ const Search = () => {
 				`/genre/movie/list?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`
 			),
 			axios.get(
-				'/person/popular?api_key=9ca328af7c78baabe047a77c3ca0675e&language=en-US&page=1'
+				`/person/popular?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US&page=1`
 			),
 		])
 			.then((arrayData) => {
