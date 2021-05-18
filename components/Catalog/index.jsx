@@ -1,12 +1,12 @@
 import MovieCard from '../MovieCard';
-import Slider from '../Slider';
+import Hero from '../Hero';
 import { StyledCatalog } from './styles';
 import { ImSpinner2 } from 'react-icons/im';
 
 const Catalog = ({ movieList, isLoading, changePage }) => {
 	return (
 		<StyledCatalog>
-			<Slider />
+			<Hero />
 			<div className='container'>
 				{movieList.map((movie) => {
 					return <MovieCard movie={movie} key={movie.id} />;

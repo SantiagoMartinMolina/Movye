@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { StyledModal } from './styles.jsx';
 import { AiFillStar } from 'react-icons/ai';
@@ -14,6 +14,19 @@ const Modal = () => {
 	const { poster_path, release_date, title, vote_average, genre_ids, overview } = movie;
 	const genresNames = genres.filter((g) => genre_ids.includes(g.id));
 	const url = poster_path ? `https://image.tmdb.org/t/p/w500/${poster_path}` : 'https://images.unsplash.com/photo-1542204637-e67bc7d41e48?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80'
+
+	const [isFavorite, setIsFavorite] = useState(false);
+	const [isWatchlist, setIsWatchlist] = useState(false);
+	const [favorites, setFavorites] = useState(JSON.parse(localStorage.getItem('favorites')));
+	const [watchlist, setWatchlist] = useState(JSON.parse(localStorage.getItem('watchlist')));
+
+
+	useEffect(() => {
+		let foundFav = favorites.find(m => m.id === movie.id);
+		let foundWatch = watchlist.find(m => m.id === movie.id);
+		setIsFavorite(!!foundFav);
+		setIsWatchlist(!!foundWatch);
+	}, [])
 
 	const closeClick = (ev) => {
 		if (ev.target === overlay.current) {
@@ -37,6 +50,37 @@ const Modal = () => {
 		};
 	}, []);
 
+	const addToLocalStorage = (key) => {
+		let array = JSON.parse(localStorage.getItem(key));
+		array.push(movie);
+		localStorage.setItem(key, JSON.stringify(array));
+	}
+
+	const removeFromLocalStorage = (key) => {
+		let array = JSON.parse(localStorage.getItem(key));
+		array = array.filter((m) => m.id !== movie.id);
+		localStorage.setItem(key, JSON.stringify(array));
+	}
+
+	const handleClick = (key) => {
+		if (key === 'favorites') {
+			if (isFavorite) {
+				removeFromLocalStorage(key);
+				setIsFavorite(false);
+			} else {
+				addToLocalStorage(key);
+				setIsFavorite(true);
+			}
+		} else {
+			if (isWatchlist) {
+				removeFromLocalStorage(key);
+				setIsWatchlist(false);
+			} else {
+				addToLocalStorage(key);
+				setIsWatchlist(true);
+			}
+		}
+	}
 	return (
 		<StyledModal ref={overlay}>
 			<div className='modal'>
@@ -63,11 +107,22 @@ const Modal = () => {
 					</div>
 
 					<div className='modal__buttons'>
-						<button className='btn-fav'>
-							<HiOutlineHeart /> Add to favorites
+						<button className='btn-fav' onClick={() => handleClick('favorites')}>
+							<HiOutlineHeart />
+							{
+								isFavorite
+									? 'Remove from favorites'
+									: 'Add to favorites'
+							}
 						</button>
-						<button className='btn-watch'>
-							<BiCameraMovie /> Add to watchlist
+						<button className='btn-watch' onClick={() => handleClick('watchlist')}>
+							<BiCameraMovie />
+							{
+								isWatchlist
+									? 'Remove from watchlist'
+									: 'Add to watchlist'
+							}
+
 						</button>
 					</div>
 				</div>

@@ -1,7 +1,6 @@
 import styled from 'styled-components';
-import { show } from '../../utils/animations';
 
-export const StyledSlider = styled.div`
+export const StyledHero = styled.div`
 	background-image: url(${(props) => props.bgImage});
 	background-size: cover;
 	background-position: center;
