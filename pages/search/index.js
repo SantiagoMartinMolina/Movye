@@ -1,11 +1,10 @@
 import { useEffect, useState, useContext } from 'react';
 import axios from '../../axios';
 import Layout from '../../components/Layout';
-import FilterButton from '../../components/FilterButton';
-import { StyledSearch } from '../../styles/search';
 import { Context } from '../../context';
 import Form from '../../components/Form';
 import MovieContainer from '../../components/MoviesContainer';
+import FiltersContainer from '../../components/FiltersContainer';
 
 const Search = () => {
 	const [input, setInput] = useState('');
@@ -83,10 +82,10 @@ const Search = () => {
 		setShowResults(false);
 	};
 
-	const searchBy = (query, value) => {
+	const searchBy = (value) => {
 		axios
 			.get(
-				`/discover/movie?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&page=1&${query}=${value}`
+				`/discover/movie?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&page=1&with_genre=${value}`
 			)
 			.then(({ data }) => {
 				console.log(data);
@@ -97,7 +96,7 @@ const Search = () => {
 
 	return (
 		<Layout>
-			<StyledSearch>
+			<main>
 				<Form
 					input={input}
 					reset={reset}
@@ -112,48 +111,9 @@ const Search = () => {
 						setPageNumber={setPageNumber}
 					/>
 				) : (
-					<section>
-						<h2>Buscar por género</h2>
-						<button onClick={() => setIndexGenres((i) => i + 5)}>+</button>
-						<button onClick={() => setIndexGenres((i) => i - 5)}>-</button>
-						<div className='filter-container'>
-							{genres
-								.filter((g, i) => i >= indexGenres && i <= indexGenres + 4)
-								.map((genre) => (
-									<FilterButton
-										key={genre.id}
-										name={genre.name}
-										id={genre.id}
-										searchBy={searchBy}
-										query='with_genres'
-									/>
-								))}
-						</div>
-
-						<h2>Buscar por actor</h2>
-						<button onClick={() => setIndexActors((i) => i + 5)}>+</button>
-						<button onClick={() => setIndexActors((i) => i - 5)}>-</button>
-						<div className='filter-container'>
-							{actors
-								.filter(
-									(actor, i) =>
-										i >= indexActors &&
-										i <= indexActors + 4 &&
-										actor.id !== 1901875
-								)
-								.map((actor) => (
-									<FilterButton
-										key={actor.id}
-										name={actor.name}
-										id={actor.id}
-										searchBy={searchBy}
-										query='with_cast'
-									/>
-								))}
-						</div>
-					</section>
+					<FiltersContainer genres={genres} searchBy={searchBy} />
 				)}
-			</StyledSearch>
+			</main>
 		</Layout>
 	);
 };
