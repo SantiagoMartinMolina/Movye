@@ -1,26 +1,17 @@
-import MovieCard from '../MovieCard';
 import Hero from '../Hero';
 import { StyledCatalog } from './styles';
-import { ImSpinner2 } from 'react-icons/im';
+import MovieContainer from '../MoviesContainer';
 
-const Catalog = ({ movieList, isLoading, changePage }) => {
+const Catalog = ({ movieList, isLoading, changePage, showMessage }) => {
 	return (
 		<StyledCatalog>
 			<Hero />
-			<div className='container'>
-				{movieList.map((movie) => {
-					return <MovieCard movie={movie} key={movie.id} />;
-				})}
-			</div>
-			<div className='load-more'>
-				<button
-					className='load-more-btn'
-					disabled={isLoading ? true : null}
-					onClick={() => changePage((n) => n + 1)}
-				>
-					{isLoading ? <ImSpinner2 /> : 'Load more movies'}
-				</button>
-			</div>
+			<MovieContainer
+				movies={movieList}
+				showMessage={showMessage}
+				isLoading={isLoading}
+				setPageNumber={changePage}
+			/>
 		</StyledCatalog>
 	);
 };
