@@ -53,6 +53,7 @@ const Search = () => {
 	const handleSubmit = async (ev) => {
 		ev.preventDefault();
 		if (input.length > 0) {
+			setResults([]);
 			setMoviesLoaded(false);
 			setShowMessage(false);
 			setShowResults(true);
@@ -82,6 +83,7 @@ const Search = () => {
 		setMoviesLoaded(false);
 		setShowResults(false);
 		setShowMessage(true);
+
 		axios
 			.get(
 				`/discover/movie?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&page=1&with_genres=${value}`
