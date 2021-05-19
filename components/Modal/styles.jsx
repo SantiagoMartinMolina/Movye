@@ -17,7 +17,7 @@ export const StyledModal = styled.div`
 		background-color: var(--dark-100);
 		box-shadow: 0 1em 1em -0.5em #0008;
 		border-radius: 1em;
-		max-height: 30em;
+		max-height: 35em;
 		width: 90%;
 		max-width: 60em;
 		overflow: hidden;
@@ -62,13 +62,13 @@ export const StyledModal = styled.div`
 			position: relative;
 			font-size: 0.9em;
 
-			&:last-child{
-				svg{
+			&:last-child {
+				svg {
 					color: gold;
 				}
 			}
 
-			svg{
+			svg {
 				margin-right: 0.5em;
 			}
 
@@ -102,9 +102,16 @@ export const StyledModal = styled.div`
 		overflow-y: scroll;
 		height: 15em;
 		padding-right: 1em;
+		margin-bottom: 2em;
 
 		p {
 			margin-bottom: 1em;
+			display: flex;
+			flex-wrap: wrap;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
 		}
 
 		a {
@@ -115,7 +122,8 @@ export const StyledModal = styled.div`
 			font-size: 0.6em;
 			text-transform: uppercase;
 			padding: 0.5em 1em;
-			margin-left: 1em;
+			margin-left: 0.75em;
+			margin-bottom: 0.75em;
 			border-radius: 0.5em;
 			transition: background-color 200ms ease;
 
@@ -141,6 +149,7 @@ export const StyledModal = styled.div`
 			cursor: pointer;
 			transition: background-color 300ms ease;
 			margin-right: 2em;
+			margin-bottom: 1em;
 			display: inline-flex;
 
 			&:hover {
@@ -164,6 +173,18 @@ export const StyledModal = styled.div`
 			&:hover {
 				background-color: var(--secondary-light);
 			}
+		}
+	}
+
+	@media (max-width: 700px) {
+		.movie__title {
+			font-size: 1.5em;
+		}
+	}
+
+	@media (max-width: 450px) {
+		.modal {
+			flex-direction: column;
 		}
 	}
 `;

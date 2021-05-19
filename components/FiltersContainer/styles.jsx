@@ -1,13 +1,13 @@
 import styled from 'styled-components';
-import { showAndMove } from '../../utils/animations';
+import { show } from '../../utils/animations';
 
 export const StyledFiltersContainer = styled.section`
 	.filter-container {
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: center;
-		animation: ${showAndMove} 500ms;
-
+		animation: ${show} 500ms;
+		padding-bottom: 2em;
 	}
 
 	h2 {

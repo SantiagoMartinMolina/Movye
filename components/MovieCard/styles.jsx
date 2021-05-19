@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { show } from '../../utils/animations';
 
 export const StyledMovieCard = styled.div`
 	min-width: 15em;
@@ -8,6 +9,7 @@ export const StyledMovieCard = styled.div`
 	display: flex;
 	overflow: hidden;
 	position: relative;
+	animation: ${show} 500ms;
 
 	.img-container {
 		position: absolute;

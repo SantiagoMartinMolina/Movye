@@ -1,8 +1,8 @@
 import { StyledFilterButton } from './styles';
 
-const FilterButton = ({ className, name, searchBy, query, id }) => {
+const FilterButton = ({ className, name, searchBy, genreId }) => {
 	return (
-		<StyledFilterButton className={className} onClick={() => searchBy(query, id)}>
+		<StyledFilterButton className={className} onClick={() => searchBy(genreId)}>
 			<span>{name}</span>
 		</StyledFilterButton>
 	);

@@ -6,7 +6,11 @@ const Form = ({ reset, handleSubmit, input, handleChange, showBtn }) => {
 	return (
 		<StyledForm>
 			<div className='btn-container'>
-				{showBtn && <button className='btn' onClick={reset}><IoIosArrowBack /></button>}
+				{showBtn && (
+					<button className='btn' onClick={reset}>
+						<IoIosArrowBack />
+					</button>
+				)}
 			</div>
 			<form onSubmit={handleSubmit}>
 				<input

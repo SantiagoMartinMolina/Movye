@@ -11,10 +11,9 @@ const FiltersContainer = ({ genres, searchBy }) => {
 					<FilterButton
 						key={genre.id}
 						name={genre.name}
-						id={genre.id}
+						genreId={genre.id}
 						className={`btn-${i}`}
 						searchBy={searchBy}
-						query='with_genres'
 					/>
 				))}
 			</div>

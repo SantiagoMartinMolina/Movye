@@ -1,10 +1,9 @@
 import Hero from '../Hero';
-import { StyledCatalog } from './styles';
 import MovieContainer from '../MoviesContainer';
 
 const Catalog = ({ movieList, isLoading, changePage, showMessage, moviesLoaded }) => {
 	return (
-		<StyledCatalog>
+		<main>
 			<Hero />
 			<MovieContainer
 				movies={movieList}
@@ -13,7 +12,7 @@ const Catalog = ({ movieList, isLoading, changePage, showMessage, moviesLoaded }
 				setPageNumber={changePage}
 				moviesLoaded={moviesLoaded}
 			/>
-		</StyledCatalog>
+		</main>
 	);
 };
 

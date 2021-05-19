@@ -9,16 +9,23 @@ const randomColor = () => {
 const createButtons = () => {
 	let styles = '';
 	for (let i = 0; i <= 19; i++) {
+		const color = randomColor();
 		styles += `
 			&.btn-${i} {
-				background-color: ${randomColor()};
+				background-color: ${color};
 				
-				&:hover { filter: brightness(1.1) }
+				&:hover { filter: brightness(1.15) }
+
+				&:focus {
+					outline: 2px solid ${color};
+					outline-offset: 5px;
+				}
+			
 				&:active { filter: brightness(0.95) }
 			}
 		`;
 
-		h += Math.floor(Math.random() * 150 + 50);
+		h += 20;
 	}
 
 	return css`
@@ -39,15 +46,7 @@ export const StyledFilterButton = styled.button`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	transition: background-color 300ms ease;
-
-	&:hover {
-		filter: brightness(1.1);
-	}
-
-	&:active {
-		filter: brightness(0.95);
-	}
+	transition: filter 300ms ease;
 
 	span {
 		font-family: var(--ff-title);
