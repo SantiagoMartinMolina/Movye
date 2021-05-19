@@ -8,17 +8,20 @@ export default function Home() {
 	const [movieList, setMovieList] = useState([]);
 	const [pageNumber, setPageNumber] = useState(1);
 	const [isLoading, setIsLoading] = useState(false);
+	const [moviesLoaded, setMoviesLoaded] = useState(false)
 	const [showMessage, setShowMessage] = useState(false);
 	const { setGenres } = useContext(Context);
 
 	useEffect(() => {
 		setIsLoading(true);
+		setMoviesLoaded(false);
 		axios
 			.get(
 				`/discover/movie?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&page=${pageNumber}`
 			)
 			.then(({ data }) => {
 				if (data.results.length > 0) {
+					setMoviesLoaded(true);
 					setMovieList((movies) => [...movies, ...data.results]);
 				} else {
 					setShowMessage(true);
@@ -26,6 +29,7 @@ export default function Home() {
 				setIsLoading(false);
 			})
 			.catch((err) => {
+				setMoviesLoaded(true);
 				setIsLoading(false);
 				console.error(err);
 			});
@@ -46,6 +50,7 @@ export default function Home() {
 				isLoading={isLoading}
 				changePage={setPageNumber}
 				showMessage={showMessage}
+				moviesLoaded={moviesLoaded}
 			/>
 		</Layout>
 	);

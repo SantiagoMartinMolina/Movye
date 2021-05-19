@@ -2,18 +2,22 @@ import { StyledMovieContainer } from './styles';
 import { BsExclamationTriangle } from 'react-icons/bs';
 import { ImSpinner2 } from 'react-icons/im';
 import MovieCard from '../MovieCard';
+import Spinner from '../Spinner';
 
-const MovieContainer = ({ movies, showMessage, isLoading, setPageNumber }) => {
+const MovieContainer = ({ movies, showMessage, isLoading, setPageNumber, moviesLoaded }) => {
 	return (
 		<StyledMovieContainer>
 			<div className='card-container'>
 				{movies.length > 0 ? (
 					movies.map((movie) => <MovieCard movie={movie} key={movie.id} />)
 				) : (
-					<p className='message'>
-						<BsExclamationTriangle />
+					moviesLoaded
+						?
+						<p className='message'>
+							<BsExclamationTriangle />
 						No movies found.
 					</p>
+						: <Spinner />
 				)}
 			</div>
 			{movies.length > 0 && (

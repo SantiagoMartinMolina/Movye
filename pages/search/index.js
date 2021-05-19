@@ -16,6 +16,7 @@ const Search = () => {
 	const [actors, setActors] = useState([]);
 	const [indexGenres, setIndexGenres] = useState(0);
 	const [indexActors, setIndexActors] = useState(0);
+	const [moviesLoaded, setMoviesLoaded] = useState(false);
 
 	const { genres, setGenres } = useContext(Context);
 
@@ -37,6 +38,7 @@ const Search = () => {
 
 	useEffect(() => {
 		if (pageNumber > 1 && input.length > 0) {
+			setMoviesLoaded(false);
 			const request = async () => {
 				setIsLoading(true);
 				let response = (
@@ -45,6 +47,7 @@ const Search = () => {
 					)
 				).data;
 				if (response.results.length > 0) {
+					setMoviesLoaded(true);
 					setResults((prev) => [...prev, ...response.results]);
 				} else {
 					setShowMessage(true);
@@ -62,16 +65,21 @@ const Search = () => {
 	const handleSubmit = async (ev) => {
 		ev.preventDefault();
 		if (input.length > 0) {
+			setMoviesLoaded(false);
 			setShowMessage(false);
 			setShowResults(true);
+			console.log('paso');
+
 			try {
 				let response = (
 					await axios.get(
 						`/search/movie?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US&query=${input}&page=1&include_adult=false`
 					)
 				).data;
+				setMoviesLoaded(true);
 				setResults(response.results);
 			} catch (error) {
+				setMoviesLoaded(true);
 				console.log(error);
 			}
 		}
@@ -83,16 +91,25 @@ const Search = () => {
 	};
 
 	const searchBy = (value) => {
+		setMoviesLoaded(false);
+		setShowResults(false);
 		axios
 			.get(
 				`/discover/movie?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&page=1&with_genre=${value}`
 			)
 			.then(({ data }) => {
-				console.log(data);
+				setMoviesLoaded(true);
 				setResults(data.results);
 				setShowResults(true);
-			});
+			})
+			.catch(err => {
+				setMoviesLoaded(true);
+				console.error(err);
+			})
 	};
+
+	console.log(showResults);
+	console.log(input);
 
 	return (
 		<Layout>
@@ -102,6 +119,7 @@ const Search = () => {
 					reset={reset}
 					handleSubmit={handleSubmit}
 					handleChange={handleChange}
+					showBtn={showResults}
 				/>
 				{showResults ? (
 					<MovieContainer
@@ -109,6 +127,7 @@ const Search = () => {
 						showMessage={showMessage}
 						isLoading={isLoading}
 						setPageNumber={setPageNumber}
+						moviesLoaded={moviesLoaded}
 					/>
 				) : (
 					<FiltersContainer genres={genres} searchBy={searchBy} />
