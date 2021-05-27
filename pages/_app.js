@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 
 function MyApp({ Component, pageProps }) {
   useEffect(() => {
+
     let favorites = JSON.parse(localStorage.getItem('favorites'));
     let watchlist = JSON.parse(localStorage.getItem('watchlist'));
 

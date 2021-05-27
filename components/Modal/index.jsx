@@ -8,7 +8,7 @@ import { BiCameraMovie } from 'react-icons/bi';
 import { Context } from '../../context';
 
 const Modal = () => {
-	const { setShowMovie, showMovie, genres } = useContext(Context);
+	const { setShowMovie, showMovie, genres, setFav } = useContext(Context);
 	const overlay = useRef(null);
 	const { movie } = showMovie;
 	const { poster_path, release_date, title, vote_average, genre_ids, overview } = movie;
@@ -19,7 +19,6 @@ const Modal = () => {
 	const [isWatchlist, setIsWatchlist] = useState(false);
 	const [favorites, setFavorites] = useState(JSON.parse(localStorage.getItem('favorites')));
 	const [watchlist, setWatchlist] = useState(JSON.parse(localStorage.getItem('watchlist')));
-
 
 	useEffect(() => {
 		let foundFav = favorites.find(m => m.id === movie.id);
@@ -54,12 +53,14 @@ const Modal = () => {
 		let array = JSON.parse(localStorage.getItem(key));
 		array.push(movie);
 		localStorage.setItem(key, JSON.stringify(array));
+		setFav(array);
 	}
 
 	const removeFromLocalStorage = (key) => {
 		let array = JSON.parse(localStorage.getItem(key));
 		array = array.filter((m) => m.id !== movie.id);
 		localStorage.setItem(key, JSON.stringify(array));
+		setFav(array);
 	}
 
 	const handleClick = (key) => {

@@ -36,7 +36,7 @@ const Navbar = () => {
 					</Link>
 				</li>
 				<li>
-					<Link href='/'>
+					<Link href='/favorites'>
 						<a>
 							<HiOutlineHeart /> <span>Favorites</span>
 						</a>
