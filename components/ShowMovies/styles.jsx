@@ -83,17 +83,19 @@ export const StyledShowMovies = styled.section`
 		button {
 			display: block;
 			border: 0;
-			background-color: var(--secondary);
+			background-color: var(--dark-100);
 			margin: 1.5em auto 0;
 			padding: 0.75em 1.2em;
 			border-radius: 0.5em;
 			color: var(--white);
 			font-weight: 700;
 			cursor: pointer;
-			transition: background-color 200ms ease, transform 100ms linear;
+			transition: background-color 200ms ease, transform 100ms linear, box-shadow 100ms linear;
 
 			&:hover {
-				background-color: var(--secondary-light);
+				transform: translateY(-2px);
+				box-shadow: 0 5px 10px -5px rgba(0, 0, 0, 0.5);
+				background-color: var(--dark-300);
 			}
 
 			&:active {

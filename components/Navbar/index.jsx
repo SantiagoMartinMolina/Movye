@@ -43,7 +43,7 @@ const Navbar = () => {
 					</Link>
 				</li>
 				<li>
-					<Link href='/'>
+					<Link href='/watchlist'>
 						<a>
 							<BiCameraMovie /> <span>Watchlist</span>
 						</a>

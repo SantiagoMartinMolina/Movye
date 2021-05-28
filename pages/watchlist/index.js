@@ -3,17 +3,17 @@ import Layout from '../../components/Layout';
 import ShowMovies from '../../components/ShowMovies';
 import { Context } from '../../context';
 
-const Favorites = () => {
-	const { fav } = useContext(Context);
+const Watchlist = () => {
+	const { watch } = useContext(Context);
 
 	return (
 		<Layout>
 			<main className='main-container'>
-				<h1>Your favorite movies:</h1>
-				<ShowMovies array={fav} />
+				<h1>Your watchlist:</h1>
+				<ShowMovies array={watch} />
 			</main>
 		</Layout>
 	);
 };
 
-export default Favorites;
+export default Watchlist;

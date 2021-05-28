@@ -1,35 +1,33 @@
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import MovieCard from '../MovieCard';
 import { StyledShowMovies } from './styles';
-import { useContext, useEffect, useState } from 'react';
-import { Context } from '../../context';
 import { BsExclamationTriangle } from 'react-icons/bs';
 import { FcBinoculars } from 'react-icons/fc';
 
-const ShowMovies = () => {
+const ShowMovies = ({ array }) => {
 	const router = useRouter();
-	const { fav } = useContext(Context);
-
+	const path = router.pathname.slice(1);
 	const [movies, setMovies] = useState([]);
 	const [index, setIndex] = useState(20);
 	const [showMessage, setShowMessage] = useState(false);
 	const [showButton, setShowButton] = useState(false);
 
 	useEffect(() => {
-		setMovies(fav.slice(0, index));
-	}, [fav, index]);
+		setMovies(array.slice(0, index));
+	}, [array, index]);
 
 	useEffect(() => {
-		if (index < fav.length - 1) {
+		if (index < array.length - 1) {
 			setShowButton(true);
 		}
-	}, [fav]);
+	}, [array]);
 
 	const handleClick = () => {
 		setIndex((index) => {
-			if (index + 10 > fav.length) {
+			if (index + 10 > array.length) {
 				setShowMessage(true);
-				return fav.length;
+				return array.length;
 			} else {
 				return index + 10;
 			}
@@ -38,14 +36,14 @@ const ShowMovies = () => {
 
 	return (
 		<StyledShowMovies>
-			{fav.length > 0 ? (
+			{array.length > 0 ? (
 				<>
 					<div className='card-container'>
 						{movies.map((movie) => (
 							<MovieCard movie={movie} />
 						))}
 					</div>
-					{fav.length > 0 && showButton && (
+					{array.length > 0 && showButton && (
 						<div className='load-more'>
 							{!showMessage ? (
 								<button className='load-more-btn' onClick={handleClick}>
@@ -64,7 +62,7 @@ const ShowMovies = () => {
 				<div className='no-movies'>
 					<div className='flex'>
 						<FcBinoculars />
-						<p>It seems we can't find any movies in your favorites!</p>
+						<p>It seems we can't find any movies in your {path}!</p>
 					</div>
 					<button onClick={() => router.push('/')}>Go back to the catalog</button>
 				</div>
