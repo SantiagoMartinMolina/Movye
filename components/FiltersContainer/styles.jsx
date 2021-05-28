@@ -17,7 +17,6 @@ export const StyledFiltersContainer = styled.section`
 
 		&:after {
 			content: '';
-			display: block;
 			width: 2em;
 			height: 0.2em;
 			background-color: var(--primary);

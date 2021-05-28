@@ -3,9 +3,9 @@ import { StyledNavbar } from './styles';
 import { AiOutlineHome } from 'react-icons/ai';
 import { GoSearch } from 'react-icons/go';
 import { HiOutlineHeart } from 'react-icons/hi';
+import { BiCameraMovie } from 'react-icons/bi';
 import { FaReact } from 'react-icons/fa';
 import { useEffect, useState } from 'react';
-import { BiCameraMovie } from 'react-icons/bi';
 
 const Navbar = () => {
 	const [top, setTop] = useState(0);

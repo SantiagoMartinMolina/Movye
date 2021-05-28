@@ -52,3 +52,23 @@ input,
 button {
 	font-family: inherit;
 }
+
+.main-container {
+	padding: 2em 0;
+}
+
+.main-container h1 {
+	margin-left: 0.5em;
+	margin-bottom: 1.25em;
+	position: relative;
+}
+
+.main-container h1:after {
+	content: '';
+	width: 2em;
+	height: 0.2em;
+	background-color: var(--primary);
+	position: absolute;
+	left: 0;
+	bottom: -0.75em;
+}

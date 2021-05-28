@@ -75,7 +75,7 @@ export const StyledMovieCard = styled.div`
 		}
 	}
 
-	button {
+	.btn {
 		all: unset;
 		color: var(--dark-100);
 		background-color: var(--primary);
@@ -99,10 +99,65 @@ export const StyledMovieCard = styled.div`
 		}
 	}
 
+	.collections-container {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		padding: 1em;
+		display: none;
+		opacity: 0;
+		z-index: 1;
+
+		button {
+			background: #00000099;
+			border: 0;
+			color: var(--primary);
+			width: 1.75em;
+			height: 1.75em;
+			border-radius: 50%;
+			font-size: 1.3em;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			cursor: pointer;
+			position: relative;
+
+			&:hover {
+				background-color: var(--primary);
+				color: var(--dark-100);
+			}
+
+			span {
+				position: absolute;
+				top: 0;
+				right: 0;
+				font-weight: 700;
+				font-size: 0.6em;
+				background-color: var(--primary);
+				color: var(--dark-100);
+				width: 0.7rem;
+				height: 0.7rem;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				border-radius: 50%;
+			}
+		}
+	}
+
 	&:hover {
 		.img-container {
 			transform: translateY(-0.5em);
 		}
+
+		.collections-container {
+			display: flex;
+			justify-content: space-between;
+			opacity: 1;
+			animation: ${show} 500ms;
+		}
+
 		.info,
 		h2 {
 			transform: translateY(0);

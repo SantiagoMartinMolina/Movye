@@ -10,14 +10,13 @@ const MovieContainer = ({ movies, showMessage, isLoading, setPageNumber, moviesL
 			<div className='card-container'>
 				{movies.length > 0 ? (
 					movies.map((movie) => <MovieCard movie={movie} key={movie.id} />)
-				) : (
-					moviesLoaded
-						?
-						<p className='message'>
-							<BsExclamationTriangle />
+				) : moviesLoaded ? (
+					<p className='message'>
+						<BsExclamationTriangle />
 						No movies found.
 					</p>
-						: <Spinner />
+				) : (
+					<Spinner />
 				)}
 			</div>
 			{movies.length > 0 && (

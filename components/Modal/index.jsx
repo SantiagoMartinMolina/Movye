@@ -8,12 +8,14 @@ import { BiCameraMovie } from 'react-icons/bi';
 import { Context } from '../../context';
 
 const Modal = () => {
-	const { setShowMovie, showMovie, genres, setFav } = useContext(Context);
+	const { setShowMovie, showMovie, genres, setFav, setWatch } = useContext(Context);
 	const overlay = useRef(null);
 	const { movie } = showMovie;
 	const { poster_path, release_date, title, vote_average, genre_ids, overview } = movie;
 	const genresNames = genres.filter((g) => genre_ids.includes(g.id));
-	const url = poster_path ? `https://image.tmdb.org/t/p/w500/${poster_path}` : 'https://images.unsplash.com/photo-1542204637-e67bc7d41e48?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80'
+	const url = poster_path
+		? `https://image.tmdb.org/t/p/w500/${poster_path}`
+		: 'https://images.unsplash.com/photo-1542204637-e67bc7d41e48?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80';
 
 	const [isFavorite, setIsFavorite] = useState(false);
 	const [isWatchlist, setIsWatchlist] = useState(false);
@@ -21,11 +23,11 @@ const Modal = () => {
 	const [watchlist, setWatchlist] = useState(JSON.parse(localStorage.getItem('watchlist')));
 
 	useEffect(() => {
-		let foundFav = favorites.find(m => m.id === movie.id);
-		let foundWatch = watchlist.find(m => m.id === movie.id);
+		let foundFav = favorites.find((m) => m.id === movie.id);
+		let foundWatch = watchlist.find((m) => m.id === movie.id);
 		setIsFavorite(!!foundFav);
 		setIsWatchlist(!!foundWatch);
-	}, [])
+	}, []);
 
 	const closeClick = (ev) => {
 		if (ev.target === overlay.current) {
@@ -53,15 +55,15 @@ const Modal = () => {
 		let array = JSON.parse(localStorage.getItem(key));
 		array.push(movie);
 		localStorage.setItem(key, JSON.stringify(array));
-		setFav(array);
-	}
+		key === 'favorites' ? setFav(array) : setWatch(array);
+	};
 
 	const removeFromLocalStorage = (key) => {
 		let array = JSON.parse(localStorage.getItem(key));
 		array = array.filter((m) => m.id !== movie.id);
 		localStorage.setItem(key, JSON.stringify(array));
-		setFav(array);
-	}
+		key === 'favorites' ? setFav(array) : setWatch(array);
+	};
 
 	const handleClick = (key) => {
 		if (key === 'favorites') {
@@ -81,7 +83,8 @@ const Modal = () => {
 				setIsWatchlist(true);
 			}
 		}
-	}
+	};
+
 	return (
 		<StyledModal ref={overlay}>
 			<div className='modal'>
@@ -91,8 +94,16 @@ const Modal = () => {
 				<div className='modal__info'>
 					<h1 className='movie__title'>{title}</h1>
 					<ul className='movie__data'>
-						{release_date && <li><BsCalendar />{release_date.slice(0, 4)}</li>}
-						<li><AiFillStar />{vote_average} / 10</li>
+						{release_date && (
+							<li>
+								<BsCalendar />
+								{release_date.slice(0, 4)}
+							</li>
+						)}
+						<li>
+							<AiFillStar />
+							{vote_average} / 10
+						</li>
 					</ul>
 
 					<div className='modal__scroll'>
@@ -100,36 +111,27 @@ const Modal = () => {
 						<p>
 							Genres:
 							{genresNames.map((g) => (
-							<Link href='/' key={g.id}>
-								<a>{g.name}</a>
-							</Link>
-						))}
+								<Link href='/' key={g.id}>
+									<a>{g.name}</a>
+								</Link>
+							))}
 						</p>
 					</div>
 
 					<div className='modal__buttons'>
 						<button className='btn-fav' onClick={() => handleClick('favorites')}>
 							<HiOutlineHeart />
-							{
-								isFavorite
-									? 'Remove from favorites'
-									: 'Add to favorites'
-							}
+							{isFavorite ? 'Remove from favorites' : 'Add to favorites'}
 						</button>
 						<button className='btn-watch' onClick={() => handleClick('watchlist')}>
 							<BiCameraMovie />
-							{
-								isWatchlist
-									? 'Remove from watchlist'
-									: 'Add to watchlist'
-							}
-
+							{isWatchlist ? 'Remove from watchlist' : 'Add to watchlist'}
 						</button>
 					</div>
 				</div>
 			</div>
 		</StyledModal>
-	)
+	);
 };
 
 export default Modal;
