@@ -8,7 +8,7 @@ export default function Home() {
 	const [movieList, setMovieList] = useState([]);
 	const [pageNumber, setPageNumber] = useState(1);
 	const [isLoading, setIsLoading] = useState(false);
-	const [moviesLoaded, setMoviesLoaded] = useState(false)
+	const [moviesLoaded, setMoviesLoaded] = useState(false);
 	const [showMessage, setShowMessage] = useState(false);
 	const { setGenres } = useContext(Context);
 

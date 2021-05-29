@@ -40,7 +40,7 @@ const ShowMovies = ({ array }) => {
 				<>
 					<div className='card-container'>
 						{movies.map((movie) => (
-							<MovieCard movie={movie} />
+							<MovieCard movie={movie} key={movie.id} />
 						))}
 					</div>
 					{array.length > 0 && showButton && (

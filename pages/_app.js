@@ -3,6 +3,7 @@ import { MovieContext } from '../context';
 import { useEffect } from 'react';
 
 function MyApp({ Component, pageProps }) {
+
   useEffect(() => {
 
     let favorites = JSON.parse(localStorage.getItem('favorites'));

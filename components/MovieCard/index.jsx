@@ -14,8 +14,8 @@ const MovieCard = ({ movie }) => {
 	const [isInWatchlist, setIsInWatchlist] = useState(false);
 
 	useEffect(() => {
-		setIsFavorite(fav.some((f) => f.id === movie.id));
-		setIsInWatchlist(watch.some((f) => f.id === movie.id));
+		setIsFavorite(fav?.some((f) => f.id === movie.id));
+		setIsInWatchlist(watch?.some((f) => f.id === movie.id));
 	}, [fav, watch]);
 
 	const url = poster_path
