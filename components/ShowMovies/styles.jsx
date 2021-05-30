@@ -103,4 +103,15 @@ export const StyledShowMovies = styled.section`
 			}
 		}
 	}
+
+	@media (max-width: 700px) {
+		.no-movies {
+			padding: 1em 1.5em;
+			.flex {
+				flex-direction: column;
+				justify-content: center;
+				text-align: center;
+			}
+		}
+	}
 `;

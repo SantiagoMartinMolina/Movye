@@ -88,6 +88,12 @@ const Modal = () => {
 	return (
 		<StyledModal ref={overlay}>
 			<div className='modal'>
+				<button
+					className='close'
+					onClick={() => setShowMovie((prev) => ({ ...prev, show: false }))}
+				>
+					X
+				</button>
 				<div className='modal__img'>
 					<img src={url} alt={`Poster of ${title}`} />
 				</div>
@@ -111,9 +117,7 @@ const Modal = () => {
 						<p>
 							Genres:
 							{genresNames.map((g) => (
-								<Link href='/' key={g.id}>
-									<a>{g.name}</a>
-								</Link>
+								<span key={g.id}>{g.name}</span>
 							))}
 						</p>
 					</div>

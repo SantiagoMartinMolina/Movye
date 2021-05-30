@@ -5,7 +5,6 @@ import { Context } from '../../context/index';
 import { useContext } from 'react';
 
 const Layout = ({ children }) => {
-
 	const { showMovie } = useContext(Context);
 	return (
 		<>
@@ -13,9 +12,7 @@ const Layout = ({ children }) => {
 			<Navbar />
 			<Topbar />
 
-			<div style={{ marginLeft: '4em' }}>
-				{children}
-			</div>
+			<div className='global-wrapper'>{children}</div>
 		</>
 	);
 };

@@ -86,10 +86,17 @@ export const StyledNavbar = styled.nav`
 			display: inline;
 			animation: ${show} 1s;
 		}
+	}
 
-		.credits svg {
-			/* animation: ${hide} 1s;
-			animation-fill-mode: forwards; */
+	@media (max-width: 400px) {
+		width: 3em;
+
+		ul a {
+			padding: 1em 0 1em 0.5em;
+		}
+
+		.credits p {
+			padding: 0 0.85em 1em;
 		}
 	}
 `;

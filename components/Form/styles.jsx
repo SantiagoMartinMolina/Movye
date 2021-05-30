@@ -5,8 +5,9 @@ export const StyledForm = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	/* background-color: red; */
 	margin: 2em 0;
+	width: 90%;
+
 	.btn-container {
 		min-width: 3em;
 		margin-right: 0.5em;
@@ -38,7 +39,6 @@ export const StyledForm = styled.div`
 	}
 
 	form {
-		/* margin: 0 auto; */
 		padding: 0 1.2em;
 		border-radius: 99em;
 		border: 2px solid currentColor;
@@ -58,6 +58,7 @@ export const StyledForm = styled.div`
 			border: 0;
 			color: var(--white);
 			padding: 0.75em 1em 0.75em 0;
+			min-width: 0;
 
 			&:focus {
 				outline: none;
@@ -66,6 +67,18 @@ export const StyledForm = styled.div`
 
 		svg {
 			color: currentColor;
+		}
+	}
+
+	@media (max-width: 400px) {
+		.btn-container {
+			min-width: 2em;
+			margin-right: 0.5em;
+			margin-left: 1em;
+		}
+
+		.btn {
+			font-size: 1em;
 		}
 	}
 `;

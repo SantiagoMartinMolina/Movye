@@ -17,26 +17,24 @@ export const StyledTopbar = styled.div`
 		svg {
 			height: 100%;
 			width: 100%;
+			min-width: 5em;
 		}
 	}
 
-	.user {
+	.github {
+		color: currentColor;
+		font-size: 2em;
 		display: flex;
 		align-items: center;
+		justify-content: center;
+		transition: color 200ms ease;
 
-		div {
-			margin-right: 0.5em;
-			width: 2em;
-			height: 2em;
-			overflow: hidden;
-			border-radius: 50%;
-			border: 2px solid var(--primary);
-
-			img {
-				width: 100%;
-				height: 100%;
-				object-fit: cover;
-			}
+		&:hover {
+			color: var(--primary);
 		}
+	}
+
+	@media (max-width: 400px) {
+		padding: 0 2em;
 	}
 `;

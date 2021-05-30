@@ -12,6 +12,25 @@ export const StyledModal = styled.div`
 	align-items: center;
 	justify-content: center;
 
+	.close {
+		position: absolute;
+		top: 1em;
+		right: 1em;
+		background-color: var(--dark-100);
+		width: 2em;
+		height: 2em;
+		border: none;
+		border-radius: 50%;
+		color: var(--white);
+		font-size: 1em;
+		font-weight: bold;
+		cursor: pointer;
+
+		&:hover {
+			background-color: var(--dark-200);
+		}
+	}
+
 	.modal {
 		display: flex;
 		background-color: var(--dark-100);
@@ -21,6 +40,7 @@ export const StyledModal = styled.div`
 		width: 90%;
 		max-width: 60em;
 		overflow: hidden;
+		position: relative;
 	}
 
 	.modal__img {
@@ -46,6 +66,7 @@ export const StyledModal = styled.div`
 	.movie__title {
 		font-style: italic;
 		margin-bottom: 0.3em;
+		padding-right: 1em;
 	}
 
 	.movie__data {
@@ -114,7 +135,7 @@ export const StyledModal = styled.div`
 			}
 		}
 
-		a {
+		span {
 			text-decoration: none;
 			background-color: var(--primary);
 			color: var(--dark-100);
@@ -125,11 +146,6 @@ export const StyledModal = styled.div`
 			margin-left: 0.75em;
 			margin-bottom: 0.75em;
 			border-radius: 0.5em;
-			transition: background-color 200ms ease;
-
-			&:hover {
-				background-color: var(--primary-light);
-			}
 		}
 	}
 
@@ -176,15 +192,29 @@ export const StyledModal = styled.div`
 		}
 	}
 
-	@media (max-width: 700px) {
+	@media (max-width: 550px) {
+		.modal {
+			flex-direction: column;
+			max-height: 90%;
+			overflow: scroll;
+		}
+
+		.modal__img {
+			width: 100%;
+			height: 15em;
+			overflow: visible;
+			img {
+				/* object-fit: contain; */
+			}
+		}
+
 		.movie__title {
 			font-size: 1.5em;
 		}
-	}
 
-	@media (max-width: 450px) {
-		.modal {
-			flex-direction: column;
+		.modal__scroll {
+			overflow-y: auto;
+			height: auto;
 		}
 	}
 `;
