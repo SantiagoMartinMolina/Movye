@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const StyledHero = styled.div`
 	background-image: url(${(props) => props.bgImage});
 	background-size: cover;
-	background-position: center;
+	background-position: top center;
 	background-repeat: no-repeat;
 	height: 30em;
 	display: flex;
