@@ -40,7 +40,7 @@ const ShowMovies = ({ array }) => {
 				<>
 					<div className='card-container'>
 						{movies.map((movie) => (
-							<MovieCard movie={movie} key={movie.id} />
+							<MovieCard movie={movie} key={movie.id || Math.random() * 1000} />
 						))}
 					</div>
 					{array.length > 0 && showButton && (
@@ -62,7 +62,7 @@ const ShowMovies = ({ array }) => {
 				<div className='no-movies'>
 					<div className='flex'>
 						<FcBinoculars />
-						<p>It seems we can't find any movies in your {path}!</p>
+						<p>There aren't any movies in your {path}.</p>
 					</div>
 					<button onClick={() => router.push('/')}>Go back to the catalog</button>
 				</div>

@@ -149,6 +149,8 @@ const Catalog = ({ movieList, isLoading, changePage, showMessage, moviesLoaded }
 						styles={customStyles}
 						className='select'
 						placeholder='Filter by genre(s)'
+						instanceId={'react-01'}
+						inputId={'react-01'}
 					/>
 					<Select
 						isClearable={true}
@@ -157,6 +159,8 @@ const Catalog = ({ movieList, isLoading, changePage, showMessage, moviesLoaded }
 						styles={customStyles}
 						className='select'
 						placeholder='Filter by year'
+						instanceId={'react-02'}
+						inputId={'react-02'}
 					/>
 					<Select
 						isClearable={true}
@@ -165,6 +169,8 @@ const Catalog = ({ movieList, isLoading, changePage, showMessage, moviesLoaded }
 						styles={customStyles}
 						className='select'
 						placeholder='Order by...'
+						instanceId={'react-03'}
+						inputId={'react-03'}
 					/>
 				</div>
 			</div>

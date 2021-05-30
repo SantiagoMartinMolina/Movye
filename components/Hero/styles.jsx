@@ -8,14 +8,13 @@ export const StyledHero = styled.div`
 	height: 30em;
 	display: flex;
 	overflow: hidden;
+	cursor: pointer;
 
 	.info {
 		padding: 0 4em 2em;
 		display: flex;
 		flex-direction: column;
 		flex: 1;
-		transform: translateY(5em);
-		transition: transform 200ms ease;
 		background: linear-gradient(0deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 100%);
 	}
 
@@ -26,36 +25,33 @@ export const StyledHero = styled.div`
 
 	.description {
 		max-width: 80ch;
-		opacity: 0;
-		transition: opacity 400ms ease;
+		display: -webkit-box;
+		-webkit-line-clamp: 3;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+		word-break: break-word;
 	}
 
 	.data {
 		display: flex;
 		margin: 0.5em 0;
+
 		p {
 			display: flex;
 			align-items: center;
 			font-size: 1.3em;
 		}
+
 		svg {
 			margin-right: 0.5em;
 		}
+
 		p:last-child {
 			margin-left: 1em;
+
 			svg {
 				color: gold;
 			}
-		}
-	}
-
-	&:hover {
-		.description {
-			opacity: 1;
-		}
-
-		.info {
-			transform: translateY(0);
 		}
 	}
 `;

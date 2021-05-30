@@ -13,9 +13,13 @@ const Modal = () => {
 	const { movie } = showMovie;
 	const { poster_path, release_date, title, vote_average, genre_ids, overview } = movie;
 	const genresNames = genres.filter((g) => genre_ids.includes(g.id));
-	const url = poster_path
+	let url = poster_path
 		? `https://image.tmdb.org/t/p/w500/${poster_path}`
 		: 'https://images.unsplash.com/photo-1542204637-e67bc7d41e48?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80';
+
+	if (poster_path && poster_path[0] !== '/') {
+		url = poster_path;
+	}
 
 	const [isFavorite, setIsFavorite] = useState(false);
 	const [isWatchlist, setIsWatchlist] = useState(false);

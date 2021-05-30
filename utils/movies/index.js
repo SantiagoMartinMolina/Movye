@@ -1,27 +1,21 @@
 export let movies = [
 	{
 		title: 'Harry Potter and the Order of the Phoenix',
-		year: '2007',
-		rating: '7.7',
-		description:
+		release_date: '2007',
+		vote_average: '7.7',
+		overview:
 			'The rebellion begins! Lord Voldemort has returned, but the Ministry of Magic is doing everything it can to keep the wizarding world from knowing the truth – including appointing Ministry official Dolores Umbridge as the new Defence Against the Dark Arts professor at Hogwarts.',
-		image: 'https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/media/image/2016/11/critica-harry-potter-orden-fenix.jpg',
-		trailer: 'y6ZW7KXaXYk',
-		director: 'David Yates',
-		cast: ['Daniel Radclife', 'Rupert Grint', 'Emma Watson', 'Ralph Fiennes', 'Alan Rickman'],
-		genres: ['Fantasy', 'Adventures'],
+		poster_path: 'https://i.imgur.com/9Wg5Kyd.jpg',
+		genre_ids: [14, 12],
 	},
 	{
 		title: 'Titanic',
-		year: '1997',
-		rating: '7.9',
-		description:
+		release_date: '1997',
+		vote_average: '7.9',
+		overview:
 			"101-year-old Rose DeWitt Bukater tells the story of her life aboard the Titanic, 84 years later. A young Rose boards the ship with her mother and fiancé. Meanwhile, Jack Dawson and Fabrizio De Rossi win third-class tickets aboard the ship. Rose tells the whole story from Titanic's departure through to its death—on its first and last voyage—on April 15, 1912.",
-		image: 'https://i.imgur.com/rL5gsfj.png',
-		trailer: 'kVrqfYjkTdQ',
-		director: 'James Cameron',
-		cast: ['Leonardo DiCaprio', 'Kate Winslet', 'Billy Zane', 'Gloria Stuart', 'Bill Paxton'],
-		genres: ['Romance', 'Drama', 'Disaster'],
+		poster_path: 'https://i.imgur.com/rL5gsfj.png',
+		genre_ids: [10749, 18],
 	},
 	/* {
         title: 'Joker',
