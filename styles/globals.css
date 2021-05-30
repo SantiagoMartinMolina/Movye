@@ -72,3 +72,14 @@ button {
 	left: 0;
 	bottom: -0.75em;
 }
+
+.filter {
+	display: flex;
+	justify-content: space-between;
+	margin: 2em 2em 0;
+}
+
+.select {
+	min-width: 300px;
+	max-width: 450px;
+}
