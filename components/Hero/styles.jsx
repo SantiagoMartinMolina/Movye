@@ -54,4 +54,17 @@ export const StyledHero = styled.div`
 			}
 		}
 	}
+
+	@media (max-width: 550px) {
+		.info {
+			padding: 0 2em 2em;
+		}
+		h1 {
+			font-size: 1.75em;
+		}
+
+		.data p {
+			font-size: 1em;
+		}
+	}
 `;
