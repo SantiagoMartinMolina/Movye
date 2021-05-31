@@ -1,4 +1,4 @@
-![Movye](https://i.imgur.com/y0e8eNL.png)\
+![Movye](https://i.imgur.com/YZC8ioW.png)\
 Un proyecto creado con Next.js. Busca información de tu película preferida y agregala a tus favoritos o a tu watchlist.
 
 https://movye.vercel.app/
