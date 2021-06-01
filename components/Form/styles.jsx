@@ -39,7 +39,7 @@ export const StyledForm = styled.div`
 	}
 
 	form {
-		padding: 0 1.2em;
+		padding: 0 0.5em 0 1.2em;
 		border-radius: 99em;
 		border: 2px solid currentColor;
 		display: flex;
@@ -62,6 +62,29 @@ export const StyledForm = styled.div`
 
 			&:focus {
 				outline: none;
+			}
+		}
+
+		.submit {
+			align-self: stretch;
+			width: 2.5em;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			color: currentColor;
+			background: none;
+			border: none;
+			outline: none;
+			font-size: 1.1em;
+			cursor: pointer;
+
+			&:hover,
+			&:focus {
+				color: var(--primary-light);
+			}
+
+			&:active {
+				color: var(--primary);
 			}
 		}
 

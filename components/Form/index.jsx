@@ -19,7 +19,9 @@ const Form = ({ reset, handleSubmit, input, handleChange, showBtn }) => {
 					value={input}
 					onChange={handleChange}
 				/>
-				<GoSearch />
+				<button type='submit' className='submit'>
+					<GoSearch />
+				</button>
 			</form>
 		</StyledForm>
 	);
