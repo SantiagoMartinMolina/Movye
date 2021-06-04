@@ -196,7 +196,7 @@ export const StyledModal = styled.div`
 		.modal {
 			flex-direction: column;
 			max-height: 90%;
-			overflow: scroll;
+			overflow-y: scroll;
 		}
 
 		.modal__img {
