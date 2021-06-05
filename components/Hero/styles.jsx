@@ -55,7 +55,8 @@ export const StyledHero = styled.div`
 		}
 	}
 
-	@media (max-width: 550px) {
+	@media (max-width: 700px) {
+		height: 20em;
 		.info {
 			padding: 0 2em 2em;
 		}
