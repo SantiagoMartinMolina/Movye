@@ -10,7 +10,7 @@ const Watchlist = () => {
 	return (
 		<>
 			<Head>
-				<title>Movye - Your watchlist</title>
+				<title>Movye - Your Watchlist</title>
 			</Head>
 			<Layout>
 				<main className='main-container'>
