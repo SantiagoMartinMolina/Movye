@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import { useEffect, useState, useContext } from 'react';
 import axios from '../axios';
 import Layout from '../components/Layout';
@@ -44,14 +45,19 @@ export default function Home() {
 	}, []);
 
 	return (
-		<Layout>
-			<Catalog
-				movieList={movieList}
-				isLoading={isLoading}
-				changePage={setPageNumber}
-				showMessage={showMessage}
-				moviesLoaded={moviesLoaded}
-			/>
-		</Layout>
+		<>
+			<Head>
+				<title>Movye - Home</title>
+			</Head>
+			<Layout>
+				<Catalog
+					movieList={movieList}
+					isLoading={isLoading}
+					changePage={setPageNumber}
+					showMessage={showMessage}
+					moviesLoaded={moviesLoaded}
+				/>
+			</Layout>
+		</>
 	);
 }

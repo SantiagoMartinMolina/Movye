@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import { useEffect, useState, useContext } from 'react';
 import axios from '../../axios';
 import Layout from '../../components/Layout';
@@ -100,28 +101,33 @@ const Search = () => {
 	};
 
 	return (
-		<Layout>
-			<main>
-				<Form
-					input={input}
-					reset={reset}
-					handleSubmit={handleSubmit}
-					handleChange={handleChange}
-					showBtn={showResults}
-				/>
-				{showResults ? (
-					<MovieContainer
-						movies={results}
-						showMessage={showMessage}
-						isLoading={isLoading}
-						setPageNumber={setPageNumber}
-						moviesLoaded={moviesLoaded}
+		<>
+			<Head>
+				<title>Movye - Search</title>
+			</Head>
+			<Layout>
+				<main>
+					<Form
+						input={input}
+						reset={reset}
+						handleSubmit={handleSubmit}
+						handleChange={handleChange}
+						showBtn={showResults}
 					/>
-				) : (
-					<FiltersContainer genres={genres} searchBy={searchBy} />
-				)}
-			</main>
-		</Layout>
+					{showResults ? (
+						<MovieContainer
+							movies={results}
+							showMessage={showMessage}
+							isLoading={isLoading}
+							setPageNumber={setPageNumber}
+							moviesLoaded={moviesLoaded}
+						/>
+					) : (
+						<FiltersContainer genres={genres} searchBy={searchBy} />
+					)}
+				</main>
+			</Layout>
+		</>
 	);
 };
 

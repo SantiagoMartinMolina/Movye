@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import { useContext } from 'react';
 import Layout from '../../components/Layout';
 import ShowMovies from '../../components/ShowMovies';
@@ -7,12 +8,17 @@ const Favorites = () => {
 	const { fav } = useContext(Context);
 
 	return (
-		<Layout>
-			<main className='main-container'>
-				<h1>Your favorite movies:</h1>
-				<ShowMovies array={fav} />
-			</main>
-		</Layout>
+		<>
+			<Head>
+				<title>Movye - Your Favorites</title>
+			</Head>
+			<Layout>
+				<main className='main-container'>
+					<h1>Your favorite movies:</h1>
+					<ShowMovies array={fav} />
+				</main>
+			</Layout>
+		</>
 	);
 };
 

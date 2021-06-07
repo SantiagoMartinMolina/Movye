@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import { useContext } from 'react';
 import Layout from '../../components/Layout';
 import ShowMovies from '../../components/ShowMovies';
@@ -7,12 +8,17 @@ const Watchlist = () => {
 	const { watch } = useContext(Context);
 
 	return (
-		<Layout>
-			<main className='main-container'>
-				<h1>Your watchlist:</h1>
-				<ShowMovies array={watch} />
-			</main>
-		</Layout>
+		<>
+			<Head>
+				<title>Movye - Your watchlist</title>
+			</Head>
+			<Layout>
+				<main className='main-container'>
+					<h1>Your watchlist:</h1>
+					<ShowMovies array={watch} />
+				</main>
+			</Layout>
+		</>
 	);
 };
 

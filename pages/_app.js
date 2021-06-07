@@ -15,7 +15,7 @@ function MyApp({ Component, pageProps }) {
 	return (
 		<>
 			<Head>
-				<title>Movye</title>
+				<link rel='shortcut icon' href='Movye-logo.png' type='image/png' />
 			</Head>
 			<MovieContext>
 				<Component {...pageProps} />
